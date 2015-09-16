@@ -1,0 +1,20 @@
+<nav class="navbar navbar-default">
+  <ul class="nav navbar-nav">
+    <div class="container">
+      <a href="/">home</a>
+    </div>
+    <div class="container" ng-if="!Auth.isLogged()">
+      <a href="/signup">signup</a>
+    </div>
+    <div class="container" ng-if="!Auth.isLogged()">
+      <a href="/login">login</a>
+    </div>
+    <div class="container" ng-if="Auth.isLogged()">
+      <a href="" ng-click="Auth.logout()">logout</a>
+    </div>
+    <div class="container">
+      <pre>logged in: {{ Auth.isLogged() }}</pre>
+    </div>
+    <button class="btn btn-default">Test</button>
+  </ul>
+</nav>
