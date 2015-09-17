@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-left"  >
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li  ng-if="!Auth.isLogged()">
+        <a class="navbar-link" href="/signup">Signup</a>
+      </li>
+      <li ng-if="!Auth.isLogged()">
+        <a class="navbar-link" href="/login">Login</a>
+      </li>
+      <li>
+        <a class="navbar-link" href="/contact">Contact</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li ng-if="Auth.isLogged()">
+        <p class="navbar-text"><i class="fa fa-check-circle-o logged-in"></i></span></p>
+      </li>
+      <li  ng-if="Auth.isLogged()">
+        <a class="navbar-link" href="" ng-click="Auth.logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
