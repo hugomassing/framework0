@@ -6,6 +6,7 @@ angular.module('framework0')
     var vm = this;
 
     angular.extend(vm, {
+      sent : false,
       sendEmail: function (message) {
         Contact.sendEmail(message).then(function () {
           vm.message = {};

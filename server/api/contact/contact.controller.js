@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Contact = require('./contact.model');
+var nodemailer = require('nodemailer');
 
 function handleError (res, err) {
   return res.status(500).send(err);
@@ -43,6 +44,13 @@ exports.show = function (req, res) {
 exports.create = function (req, res) {
   console.log(req.body);
   Contact.create(req.body, function (err, message) {
+    var transporter = nodemailer.createTransport();
+    transporter.sendMail({
+      from: message.email,
+      to: 'hmassing@student.42.fr',
+      subject: 'hello' + message.name,
+      text: message.text
+    });
     if (err) { return handleError(res, err); }
     return res.status(201).json(message);
   });
