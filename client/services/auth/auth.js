@@ -76,6 +76,14 @@ angular.module('framework0')
     };
 
     /**
+     * Check if the user is logged
+     *
+     * @returns {boolean}
+     */
+    this.isAdmin = function () {
+      return _user.isAdmin;
+    };
+    /**
      * Check if the user is logged after the ready state
      *
      * @returns {Promise}

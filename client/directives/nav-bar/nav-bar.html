@@ -15,10 +15,13 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
+      <li ng-if="Auth.isAdmin()">
+        <a class="navbar-link" href="/admin">Admin</a>
+      </li>
       <li ng-if="Auth.isLogged()">
         <p class="navbar-text"><i class="fa fa-check-circle-o logged-in"></i></span></p>
       </li>
-      <li  ng-if="Auth.isLogged()">
+      <li ng-if="Auth.isLogged()">
         <a class="navbar-link" href="" ng-click="Auth.logout()">Logout</a>
       </li>
     </ul>

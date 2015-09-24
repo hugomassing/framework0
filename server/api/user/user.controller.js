@@ -42,3 +42,58 @@ exports.getMe = function (req, res) {
     res.status(200).json(user);
   });
 };
+
+/**
+ * Get list of User
+ *
+ * @param req
+ * @param res
+ */
+exports.getAll = function (req, res) {
+  User.find(function (err, users) {
+    if (err) { return handleError(res, err); }
+    return res.status(200).json(users);
+  });
+};
+
+/*
+
+exports.getAll = function () {
+
+  var def = q.defer();
+
+  User.find(function (err, users) {
+    if (err) { return def.reject(err); }
+    def.resolve(users);
+  });
+
+  return def.promise;
+
+};
+
+exports.getAll = function () {
+
+  return q.Promise(function (resolve, reject) {
+
+    User.find(function (err, users) {
+      if (err) { return reject(err); }
+      resolve(users);
+    });
+
+  });
+
+};
+
+exports.getAll = function () {
+  return q.nfcall(User.find.bind(User));
+};
+
+
+exports.getAll = function (req, res) {
+  userService.getAll().then(function (users) {
+    res.status(200).send(users);
+  }).catch(function (err) {
+    res.status(400).send({ message: err.message });
+  });
+};
+*/

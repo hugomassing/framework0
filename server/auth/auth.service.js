@@ -29,6 +29,25 @@ module.exports = {
   },
 
   /**
+   * Check if a user is admin
+   * Otherwise returns 401
+   */
+  isAdmin: function () {
+    return compose()
+      .use(function (req, res, next) {
+        validateJwt(req, res, next);
+      })
+      .use(function (req, res, next) {
+        User.findById(req.user._id, function (err, user) {
+          if (err) { return next(err); }
+          if (!user || !user.isAdmin) { return res.send(401); }
+          req.user = user;
+          next();
+        });
+      });
+  },
+
+  /**
    * Returns a jwt token, signed by the app secret
    */
   signToken: function (id) {
