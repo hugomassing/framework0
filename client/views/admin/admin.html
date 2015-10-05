@@ -1,3 +1,4 @@
+<h2>Users</h2>
 <div>
   <table class="table table-bordered">
     <thead>
@@ -19,5 +20,40 @@
     </tr>
     </tbody>
   </table>
+</div>
 
+<h2>Contacts</h2>
+<div>
+  <table class="table table-bordered">
+    <thead>
+    <th>
+      Name
+    </th>
+    <th>
+      Email
+    </th>
+    <th>
+      Object
+    </th>
+    <th>
+      &nbsp;
+    </th>
+    </thead>
+    <tbody>
+    <tr ng-repeat="contact in vm.contacts">
+      <td>
+        {{ contact.name }}
+      </td>
+      <td>
+        {{ contact.email }}
+      </td>
+      <td>
+        {{ contact.text }}
+      </td>
+      <td width="100">
+        <button class="btn btn-danger" ng-click="vm.removeContact(contact)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>

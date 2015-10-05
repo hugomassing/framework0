@@ -28,7 +28,6 @@ exports.index = function (req, res) {
  * @param res
  */
 exports.create = function (req, res) {
-  console.log(req.body);
   Contact.create(req.body, function (err, message) {
     if (err) { return handleError(res, err); }
     var transporter = nodemailer.createTransport();
@@ -41,3 +40,21 @@ exports.create = function (req, res) {
     return res.status(201).json(message);
   });
 };
+
+
+/**
+ * Remove a Contact in the DB.
+ *
+ * @param req
+ * @param res
+ */
+exports.remove = function (req, res) {
+  var contactId = req.params.id;
+  Contact.remove({
+    _id: contactId
+  }, function (err) {
+    if (err) { return handleError(res, err); }
+    res.status(200).end();
+  });
+};
+

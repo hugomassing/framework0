@@ -1,15 +1,21 @@
 'use strict';
 
 angular.module('framework0')
-  .controller('AdminCtrl', function (Admin) {
+  .controller('AdminCtrl', function (Admin, Contact) {
 
     var vm = this;
 
     angular.extend(vm, {
-      getAll: function() {
+      getAllUsers: function() {
         Admin.getAll().then(function (users) {
           vm.users = users.data;
-          console.log("ok");
+        }).catch(function (err) {
+          console.log(err);
+        })
+      },
+      getAllContacts: function() {
+        Contact.getAll().then(function (contacts) {
+          vm.contacts = contacts.data;
         }).catch(function (err) {
           console.log(err);
         })
@@ -21,8 +27,18 @@ angular.module('framework0')
         Admin.removeUser(user).then(function () {
           _.remove(vm.users, user);
         })
+      },
+      removeContact: function (contact) {
+        /*if (!confirm("Are you sure?")) {
+          return;
+        }*/
+        Contact.removeContact(contact).then(function () {
+          _.remove(vm.contacts, contact);
+        })
       }
     });
 
-    vm.getAll();
+
+    vm.getAllUsers();
+    vm.getAllContacts();
   });
