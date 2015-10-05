@@ -13,7 +13,7 @@ var livereload = require('gulp-livereload');
 var config = require('../server/config/environment');
 
 var openOpts = {
-  url: 'http://localhost:' + config.port,
+  url: 'https://localhost:' + config.port,
   already: false
 };
 
