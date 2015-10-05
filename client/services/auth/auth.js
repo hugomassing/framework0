@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('framework0')
-  .service('Auth', function ($rootScope, $cookieStore, $q, $http) {
+  .service('Auth', function ($rootScope, $cookieStore, $q, $http, $location) {
 
     var _user = {};
     var _ready = $q.defer();
@@ -64,6 +64,7 @@ angular.module('framework0')
     this.logout = function () {
       $cookieStore.remove('token');
       _user = {};
+      $location.path('/login');
     };
 
     /**

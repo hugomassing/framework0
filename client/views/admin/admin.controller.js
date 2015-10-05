@@ -6,6 +6,7 @@ angular.module('framework0')
     var vm = this;
 
     angular.extend(vm, {
+      editedUser: null,
       getAllUsers: function() {
         Admin.getAll().then(function (users) {
           vm.users = users.data;
@@ -34,6 +35,14 @@ angular.module('framework0')
         }*/
         Contact.removeContact(contact).then(function () {
           _.remove(vm.contacts, contact);
+        })
+      },
+      updateUser: function (user) {
+        Admin.updateUser(user).then(function () {
+          vm.editedUser = null;
+        }).catch(function (err) {
+          console.log(err);
+
         })
       }
     });

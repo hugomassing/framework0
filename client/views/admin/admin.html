@@ -11,10 +11,14 @@
   <tbody>
   <tr ng-repeat="user in vm.users">
     <td>
-      {{ user.email }}
+      <span ng-if="vm.editedUser !== user">{{ user.email }}</span>
+      <input class="form-control" required ng-if="vm.editedUser === user" ng-model="user.email">
     </td>
-    <td width="100">
+    <td width="250">
       <button class="btn btn-danger" ng-click="vm.removeUser(user)">Delete</button>
+      <button class="btn btn-default" ng-if="vm.editedUser !== user" ng-click="vm.editedUser=user">Edit</button>
+      <button class="btn btn-info" ng-if="vm.editedUser === user" ng-click="vm.updateUser(user)">Save</button>
+      <button class="btn btn-warning" ng-if="vm.editedUser === user" ng-click="vm.editedUser = null">Cancel</button>
     </td>
   </tr>
   </tbody>

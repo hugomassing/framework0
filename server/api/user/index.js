@@ -7,7 +7,8 @@ var auth = require('../../auth/auth.service');
 
 router.get('/me', auth.isAuthenticated(), controller.getMe);
 router.get('/', auth.isAdmin(), controller.getAll);
-router.delete('/:id', auth.isAdmin(), controller.remove);
 router.post('/', controller.create);
+router.put('/:id', controller.update);
+router.delete('/:id', auth.isAdmin(), controller.remove);
 
 module.exports = router;

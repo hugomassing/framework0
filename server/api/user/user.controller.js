@@ -73,6 +73,23 @@ exports.remove = function (req, res) {
 };
 
 
+/**
+ * Update an user.
+ *
+ * @param req
+ * @param res
+ */
+exports.update = function (req, res) {
+  var userId = req.params.id;
+  var email = req.body.email;
+  if (!email || email)
+  User.update({ _id: userId }, { email: email},
+    function (err) {
+    if (err) { return handleError(res, err); }
+    res.status(200).end();
+  });
+};
+
 
 /*
 
