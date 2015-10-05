@@ -4,12 +4,6 @@
       <li>
         <a href="/">Home</a>
       </li>
-      <li  ng-if="!Auth.isLogged()">
-        <a class="navbar-link" href="/signup">Signup</a>
-      </li>
-      <li ng-if="!Auth.isLogged()">
-        <a class="navbar-link" href="/login">Login</a>
-      </li>
       <li>
         <a class="navbar-link" href="/contact">Contact</a>
       </li>
@@ -23,6 +17,12 @@
       </li>
       <li ng-if="Auth.isLogged()">
         <a class="navbar-link" href="" ng-click="Auth.logout()">Logout</a>
+      </li>
+      <li  ng-if="!Auth.isLogged()">
+        <a class="navbar-link" href="/signup">Signup</a>
+      </li>
+      <li ng-if="!Auth.isLogged()">
+        <a class="navbar-link" href="/login">Login</a>
       </li>
     </ul>
   </div>
