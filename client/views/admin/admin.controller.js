@@ -13,6 +13,14 @@ angular.module('framework0')
         }).catch(function (err) {
           console.log(err);
         })
+      },
+      removeUser: function (user) {
+        if (!confirm("Are you sure?")) {
+          return;
+        }
+        Admin.removeUser(user).then(function () {
+          _.remove(vm.users, user);
+        })
       }
     });
 

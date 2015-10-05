@@ -1,4 +1,23 @@
 <div>
-  <pre>{{ vm.users | json}}</pre>
+  <table class="table table-bordered">
+    <thead>
+    <th>
+      Email
+    </th>
+    <th>
+      &nbsp;
+    </th>
+    </thead>
+    <tbody>
+    <tr ng-repeat="user in vm.users">
+      <td>
+        {{ user.email }}
+      </td>
+      <td width="100">
+        <button class="btn btn-danger" ng-click="vm.removeUser(user)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 
 </div>

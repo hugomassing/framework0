@@ -50,11 +50,29 @@ exports.getMe = function (req, res) {
  * @param res
  */
 exports.getAll = function (req, res) {
-  User.find(function (err, users) {
+  User.find({}, "-passwordHash -salt", function (err, users) {
     if (err) { return handleError(res, err); }
     return res.status(200).json(users);
   });
 };
+
+/**
+ * Remove an user.
+ *
+ * @param req
+ * @param res
+ */
+exports.remove = function (req, res) {
+  var userId = req.params.id;
+  User.remove({
+    _id: userId
+  }, function (err) {
+    if (err) { return handleError(res, err); }
+    res.status(200).end();
+  });
+};
+
+
 
 /*
 
