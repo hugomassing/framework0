@@ -10,7 +10,7 @@
   </thead>
   <tbody>
   <tr ng-repeat="user in vm.users">
-    <td>
+    <td class="va">
       <span ng-if="vm.editedUser !== user">{{ user.email }}</span>
       <input class="form-control" required ng-if="vm.editedUser === user" ng-model="user.email">
     </td>
@@ -41,16 +41,16 @@
   </th>
   </thead>
   <tbody>
-  <tr ng-repeat="contact in vm.contacts">
-    <td>
+  <tr ng-repeat="contact in vm.contacts" >
+    <td class="va"  >
       {{ contact.name }}
     </td>
-    <td>
+    <td class="va"  >
       {{ contact.email }}
     </td>
-    <td>
+    <td class="va"  >
       {{ contact.text }}
-    </td>
+    </td class="va"  >
     <td width="100">
       <button class="btn btn-danger" ng-click="vm.removeContact(contact)">Delete</button>
     </td>
@@ -58,3 +58,28 @@
   </tbody>
 </table>
 <p ng-if="!vm.contacts.length">No mails</p>
+
+<h2>Groups</h2>
+<div class="row">
+  Add a group : <input type="text" class="form-control" ng-model="vm.newGroup" />
+  <button class="btn btn-default" ng-click="vm.addGroup(vm.newGroup)">Add</button>
+</div>
+<table class="table table-bordered" ng-if="vm.groups.length">
+  <thead>
+
+  <th>
+    &nbsp;
+  </th>
+  </thead>
+  <tbody>
+  <tr ng-repeat="group in vm.groups" >
+    <td class="va"  >
+      {{ group.name }}
+    </td>
+    <td width="100">
+      <button class="btn btn-danger" ng-click="vm.removeGroup(group)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p ng-if="!vm.groups.length">No mails</p>

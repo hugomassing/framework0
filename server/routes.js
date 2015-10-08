@@ -5,6 +5,7 @@ var config = require('./config/environment');
 module.exports = function (app) {
 
   // API
+  app.use('/api/groups', require('./api/group'));
   app.use('/api/contacts', require('./api/contact'));
   app.use('/api/users', require('./api/user'));
 

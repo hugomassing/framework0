@@ -21,6 +21,13 @@ angular.module('framework0')
           console.log(err);
         })
       },
+      getAllGroups: function() {
+        Admin.getAllGroups().then(function (groups) {
+          vm.groups = groups.data;
+        }).catch(function (err) {
+          console.log(err);
+        })
+      },
       removeUser: function (user) {
         if (!confirm("Are you sure?")) {
           return;
@@ -30,9 +37,9 @@ angular.module('framework0')
         })
       },
       removeContact: function (contact) {
-        /*if (!confirm("Are you sure?")) {
+        if (!confirm("Are you sure?")) {
           return;
-        }*/
+        }
         Contact.removeContact(contact).then(function () {
           _.remove(vm.contacts, contact);
         })
@@ -44,10 +51,19 @@ angular.module('framework0')
           console.log(err);
 
         })
+      },
+      addGroup: function (newGroup) {
+        Admin.addGroup(newGroup).then(function (res) {
+          console.log(res);
+          vm.groups.push(res.data);
+        }).catch(function (err) {
+          console.log(err);
+        })
       }
     });
 
 
     vm.getAllUsers();
     vm.getAllContacts();
+    vm.getAllGroups();
   });
