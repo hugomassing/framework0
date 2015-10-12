@@ -60,13 +60,17 @@
 <p ng-if="!vm.contacts.length">No mails</p>
 
 <h2>Groups</h2>
-<div class="row">
-  Add a group : <input type="text" class="form-control" ng-model="vm.newGroup" />
-  <button class="btn btn-default" ng-click="vm.addGroup(vm.newGroup)">Add</button>
+<div class="row container">
+   <div class="form-group col-lg-4">
+     <input type="text" class="form-control" ng-model="vm.newGroup" />
+   </div>
+   <button class="btn btn-default" ng-click="vm.addGroup(vm.newGroup)">Add</button>
 </div>
 <table class="table table-bordered" ng-if="vm.groups.length">
   <thead>
-
+  <th>
+    Name
+  </th>
   <th>
     &nbsp;
   </th>

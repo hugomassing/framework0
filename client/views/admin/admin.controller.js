@@ -56,6 +56,17 @@ angular.module('framework0')
         Admin.addGroup(newGroup).then(function (res) {
           console.log(res);
           vm.groups.push(res.data);
+          vm.newGroup = "";
+        }).catch(function (err) {
+          console.log(err);
+        })
+      },
+      removeGroup: function (group) {
+        if (!confirm("Are you sure?")) {
+          return;
+        }
+        Admin.removeGroup(group).then(function () {
+          _.remove(vm.groups, group);
         }).catch(function (err) {
           console.log(err);
         })
