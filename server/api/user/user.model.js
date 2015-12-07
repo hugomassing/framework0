@@ -8,7 +8,8 @@ var UserSchema = new Schema({
   email: String,
   passwordHash: String,
   salt: String,
-  isAdmin: { type: Boolean, default: false }
+  isAdmin: { type: Boolean, default: false },
+  group: { type: Schema.Types.ObjectId, ref:"Group" }
 });
 
 /**
